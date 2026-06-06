@@ -27,7 +27,10 @@ function App() {
     useState(initialWatchLaterVideos);
   return (
     <>
-      <Navbar lovedVideos={lovedVideos} />
+      <Navbar
+        lovedVideos={lovedVideos}
+        watchLaterVideos={watchLaterVideos}
+      />
 
       <main>
         <Routes>
@@ -37,13 +40,19 @@ function App() {
               <Home
                 lovedVideos={lovedVideos}
                 setLovedVideos={setLovedVideos}
+                watchLaterVideos={watchLaterVideos}
+                setWatchLaterVideos={setWatchLaterVideos}
               />
             }
           />
 
           <Route
             path="/watch-later"
-            element={<WatchLater />}
+            element={
+              <WatchLater
+                watchLaterVideos={watchLaterVideos}
+              />
+            }
           />
 
           <Route

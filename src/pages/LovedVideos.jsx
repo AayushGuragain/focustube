@@ -2,6 +2,7 @@
 // Displays videos the user has loved.
 
 import VideoCard from '../components/VideoCard';
+import EmptyState from '../components/EmptyState';
 
 function LovedVideos({ lovedVideos }) {
   return (
@@ -9,7 +10,7 @@ function LovedVideos({ lovedVideos }) {
       <h1>Loved Videos</h1>
 
       {lovedVideos.length === 0 ? (
-        <p>No loved videos yet.</p>
+        <EmptyState message="No loved videos yet." />
       ) : (
         lovedVideos.map((video) => (
           <VideoCard

@@ -3,7 +3,10 @@
 
 import { Link } from 'react-router-dom';
 
-function Navbar({ lovedVideos }) {
+function Navbar({
+  lovedVideos,
+  watchLaterVideos,
+}) {
   return (
     <nav className="navbar">
       <h2>FocusTube</h2>
@@ -14,7 +17,9 @@ function Navbar({ lovedVideos }) {
         </Link>
 
         <Link to="/watch-later">
-          <button>Watch Later</button>
+          <button>
+            Watch Later ({watchLaterVideos.length})
+          </button>
         </Link>
 
         <Link to="/loved-videos">

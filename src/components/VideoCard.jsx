@@ -5,10 +5,31 @@ function VideoCard({
   video,
   lovedVideos,
   setLovedVideos,
+  watchLaterVideos,
+  setWatchLaterVideos,
 }) {
-    // Add video to Loved Videos.
-    function handleLoveVideo() {
+// Add video to Loved Videos.
+function handleLoveVideo() {
+  const alreadyLoved = lovedVideos.some(
+    (savedVideo) => savedVideo.id === video.id
+  );
+
+  if (!alreadyLoved) {
     setLovedVideos([...lovedVideos, video]);
+  }
+}
+// Add video to Watch Later.
+function handleWatchLater() {
+  const alreadySaved = watchLaterVideos.some(
+    (savedVideo) => savedVideo.id === video.id
+  );
+
+  if (!alreadySaved) {
+    setWatchLaterVideos([
+      ...watchLaterVideos,
+      video,
+    ]);
+  }
 }
   return (
     <div className="video-card">
@@ -27,7 +48,9 @@ function VideoCard({
 
         {/* These buttons do not work yet. We are building the UI first. */}
         <div className="video-actions">
-          <button>Watch Later</button>
+          <button onClick={handleWatchLater}>
+            Watch Later
+          </button>
           <button onClick={handleLoveVideo}>
             Love
           </button>

@@ -5,11 +5,10 @@ import { mockVideos } from '../data/mockVideos';
 import VideoCard from '../components/VideoCard';
 
 function Home({
-
   lovedVideos,
-
   setLovedVideos,
-
+  watchLaterVideos,
+  setWatchLaterVideos,
 }) {
   return (
     <div>
@@ -20,10 +19,12 @@ function Home({
       {/* Render one VideoCard for each video */}
       {mockVideos.map((video) => (
         <VideoCard
-            key={video.id}
-            video={video}
-            lovedVideos={lovedVideos}
-            setLovedVideos={setLovedVideos}
+          key={video.id}
+          video={video}
+          lovedVideos={lovedVideos}
+          setLovedVideos={setLovedVideos}
+          watchLaterVideos={watchLaterVideos}
+          setWatchLaterVideos={setWatchLaterVideos}
         />
       ))}
     </div>
