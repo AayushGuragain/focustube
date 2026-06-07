@@ -10,7 +10,7 @@ import Home from './pages/Home';
 import WatchLater from './pages/WatchLater';
 import LovedVideos from './pages/LovedVideos';
 import Settings from './pages/Settings';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   initialLovedVideos,
   initialWatchLaterVideos,
@@ -25,6 +25,44 @@ function App() {
   // Stores videos saved for later.
   const [watchLaterVideos, setWatchLaterVideos] =
     useState(initialWatchLaterVideos);
+    // Load saved data when the application starts.
+    useEffect(() => {
+      const savedLovedVideos = localStorage.getItem(
+        'lovedVideos'
+      );
+
+      const savedWatchLaterVideos =
+        localStorage.getItem(
+          'watchLaterVideos'
+        );
+
+      if (savedLovedVideos) {
+        setLovedVideos(
+          JSON.parse(savedLovedVideos)
+        );
+      }
+
+      if (savedWatchLaterVideos) {
+        setWatchLaterVideos(
+          JSON.parse(savedWatchLaterVideos)
+        );
+      }
+    }, []);
+    // Save Loved Videos whenever they change.
+    useEffect(() => {
+      localStorage.setItem(
+        'lovedVideos',
+        JSON.stringify(lovedVideos)
+      );
+    }, [lovedVideos]);
+
+    // Save Watch Later whenever they change.
+    useEffect(() => {
+      localStorage.setItem(
+        'watchLaterVideos',
+        JSON.stringify(watchLaterVideos)
+      );
+    }, [watchLaterVideos]);
   return (
     <>
       <Navbar
