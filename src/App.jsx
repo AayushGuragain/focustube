@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import WatchLater from './pages/WatchLater';
 import LovedVideos from './pages/LovedVideos';
 import Settings from './pages/Settings';
+import Search from './pages/Search';
 import { useState, useEffect } from 'react';
 import {
   initialLovedVideos,
@@ -82,6 +83,10 @@ function App() {
                 setWatchLaterVideos={setWatchLaterVideos}
               />
             }
+          />
+          <Route
+            path="/search"
+            element={<Search />}
           />
 
           <Route

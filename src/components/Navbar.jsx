@@ -1,12 +1,10 @@
-// Navigation bar.
-// Uses React Router links instead of React state.
+// Main navigation bar.
+// Version 1 only needs Home and Search.
+// We are removing duplicate YouTube features like Watch Later and Loved Videos.
 
 import { Link } from 'react-router-dom';
 
-function Navbar({
-  lovedVideos,
-  watchLaterVideos,
-}) {
+function Navbar() {
   return (
     <nav className="navbar">
       <h2>FocusTube</h2>
@@ -16,20 +14,8 @@ function Navbar({
           <button>Home</button>
         </Link>
 
-        <Link to="/watch-later">
-          <button>
-            Watch Later ({watchLaterVideos.length})
-          </button>
-        </Link>
-
-        <Link to="/loved-videos">
-            <button>
-                Loved Videos ({lovedVideos.length})
-            </button>
-        </Link>
-
-        <Link to="/settings">
-          <button>Settings</button>
+        <Link to="/search">
+          <button>Search</button>
         </Link>
       </div>
     </nav>
